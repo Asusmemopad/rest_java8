@@ -1,6 +1,7 @@
 package com.example.service.book;
 
 import com.example.model.Book;
+import com.example.repositories.AuthorBookRepository;
 import com.example.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,9 @@ public class BookServiceImpl implements BookService {
 
     @Autowired
     private BookRepository bookRepository;
+
+    @Autowired
+    private AuthorBookRepository authorBookRepository;
 
     @Override
     public Collection<Book> findAllBooks() {
@@ -51,6 +55,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void deleteAllBooks() {
+        authorBookRepository.deleteAll();
         bookRepository.deleteAll();
     }
 

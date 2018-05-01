@@ -21,9 +21,9 @@ public class RestApiAuthorDate {
     @RequestMapping(value = "/author/date/{years}", method = RequestMethod.GET)
     public ResponseEntity<TreeSet<Author>> listAllAuthorsDate(@PathVariable("years") int years) {
         TreeSet<Author> authors = (TreeSet<Author>) authorService.yearsAuthor(years);
-        if (authors.isEmpty()) {
+        if (authors.isEmpty())
             return new ResponseEntity(HttpStatus.NO_CONTENT);
-        }
+
         return new ResponseEntity<TreeSet<Author>>(authors, HttpStatus.OK);
     }
 }

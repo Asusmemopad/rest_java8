@@ -3,6 +3,7 @@ package com.example.controller.author;
 import com.example.model.Author;
 import com.example.model.Book;
 import com.example.service.author.AuthorService;
+import com.example.service.authorBook.AuthorBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,9 @@ public class RestApiAuthor {
 
     @Autowired
     private AuthorService authorService;
+
+    @Autowired
+    private AuthorBookService authorBookService;
 
     @RequestMapping(value = "/author/", method = RequestMethod.GET)
     public ResponseEntity<List<Author>> listAllAuthors() {
@@ -101,6 +105,7 @@ public class RestApiAuthor {
     @RequestMapping(value = "/author/", method = RequestMethod.DELETE)
     public @ResponseBody ResponseEntity<Author> deleteAllAuthors() {
         authorService.deleteAllAuthors();
+
         return new ResponseEntity<Author>(HttpStatus.NO_CONTENT);
     }
 }

@@ -61,6 +61,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public void deleteAllAuthors() {
+        authorBookService.deleteAllJoinAuthorsBooks();
         authorRepository.deleteAll();
     }
 
